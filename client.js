@@ -1,7 +1,5 @@
 console.log('--- Weekend Project ---');
 
-$(document).ready(readyNow);
-
 const startingEmployees = [
     {
         firstName: 'Jen', 
@@ -26,6 +24,9 @@ const startingEmployees = [
     }
 ];
 
+$(document).ready(readyNow);
+
+
 function readyNow() {
     // addEmployeeButton();
     $( '#add-employee' ).on('click', addEmployeeButton);
@@ -41,14 +42,41 @@ function addEmployeeButton() {
         title: $('#in-title').val(),
         annualSalary: $('#in-salary').val(),
     }
-        $('.employees').append(`<tr>
+        $('#out-employees').append(`<tr>
             <td>${newEmployee.firstName}</td>
             <td>${newEmployee.lastName}</td>
             <td>${newEmployee.iD}</td>
             <td>${newEmployee.title}</td>
             <td>${newEmployee.annualSalary}</td>
-            <td>&nbsp;</td>
+            <td><button class="deleteButton">Delete</button></td>
         </tr>`)
         
-        $('#in-first-name').val();
+        // $('#add-employee').empty();
+        clearInputFields();
+    }
+
+    function renderEmployees() {
+        $('#out-employees').empty();
+
+        for (let person of startingEmployees) {
+            $('#out-employees').append(`
+            <tr>
+                <td>${newEmployee.firstName}</td>
+                <td>${newEmployee.lastName}</td>
+                <td>${newEmployee.iD}</td>
+                <td>${newEmployee.title}</td>
+                <td>${newEmployee.annualSalary}</td>
+                <td>
+                <button class"delete">Delete</button>
+                </td>
+            </tr>`)
+        }
+    }
+
+    function clearInputFields() {
+        $('#in-first-name').val('');
+        $('#in-last-name').val('');
+        $('#in-ID').val('');
+        $('#in-title').val('');
+        $('#in-salary').val('');
     }
