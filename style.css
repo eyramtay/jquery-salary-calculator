@@ -1,9 +1,14 @@
 table {
-    width: 100%;
+    width: 70%;
+    /* margin-right: 80%;
+    margin-left: 10%; */
+    border-collapse: collapse;
 }
 
 td, th {
     border: 1px solid;
+    text-align: left;
+    padding: 8px;
 
 }
 

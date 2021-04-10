@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jQuery.js"></script>
     <script src="client.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
@@ -14,11 +15,14 @@
     </header>
     <main>
         <section>
-            <h2>Add a Student</h2>
+            <h2>Add an Employee</h2>
             <!-- ToDo change to form ? -->
             <div>
                 <input id="in-first-name" type="text" placeholder="first name">
                 <input id="in-last-name" type="text" placeholder="last name">
+                <input id="in-ID" type="text" placeholder="ID number">
+                <input id="in-title" type="text" placeholder="title">
+                <input id="in-salary" type="text" placeholder="annual salary">
                 <button id="add-employee">Add Employee</button>
             </div><br>
 
@@ -26,7 +30,7 @@
                 <h2>Employees</h2>
             </div>
             <section>
-                <table>
+                <table class="employees">
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -47,7 +51,7 @@
                         <td>Maurice</td>
                         <td>Moss</td>
                         <td>8724</td>
-                        <td>Spport Team</td>
+                        <td>Support Team</td>
                         <td>$58,000</td>
                         <td>&nbsp;</td>
                     </tr>
