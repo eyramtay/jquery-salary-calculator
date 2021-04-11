@@ -24,6 +24,29 @@ const startingEmployees = [
     }
 ];
 
+const budget = 20000;
+
+// function calculateEmployeeCost() {
+//     console.log('In calculateEmployeeCost');
+
+//     // let employeeCost = startingEmployees.annualSalary / 12;
+
+//     for( let i = 0; i < startingEmployees.length; i++) {
+//         startingEmployees[i].annualSalary = startingEmployees[i].annualSalary / 12;
+//         console.log(startingEmployees[i].annualSalary);
+//     }
+// }
+
+function calculateBuget() {
+    console.log('in calculateBudget');
+
+    let totalBudget = 0;
+    for (let i = 0; i < startingEmployees.length; i++) {
+        totalBudget += Number(startingEmployees[i].annualSalary/12);
+    }
+    console.log(totalBudget);
+}
+
 $(document).ready(readyNow);
 
 
@@ -40,18 +63,22 @@ function addEmployeeButton() {
         lastName: $('#in-last-name').val(),
         iD: $('#in-ID').val(),
         title: $('#in-title').val(),
-        annualSalary: $('#in-salary').val(),
-    }
-        $('#out-employees').append(`<tr>
-            <td>${newEmployee.firstName}</td>
-            <td>${newEmployee.lastName}</td>
-            <td>${newEmployee.iD}</td>
-            <td>${newEmployee.title}</td>
-            <td>${newEmployee.annualSalary}</td>
-            <td><button class="deleteButton">Delete</button></td>
-        </tr>`)
+        annualSalary: Number($('#in-salary').val()),
+    };
+
+    startingEmployees.push( newEmployee );
+        // $('#out-employees').append(`<tr>
+        //     <td>${newEmployee.firstName}</td>
+        //     <td>${newEmployee.lastName}</td>
+        //     <td>${newEmployee.iD}</td>
+        //     <td>${newEmployee.title}</td>
+        //     <td>${newEmployee.annualSalary}</td>
+        //     <td><button class="deleteButton">Delete</button></td>
+        // </tr>`)
         
         // $('#add-employee').empty();
+        renderEmployees();
+
         clearInputFields();
     }
 
@@ -61,11 +88,11 @@ function addEmployeeButton() {
         for (let person of startingEmployees) {
             $('#out-employees').append(`
             <tr>
-                <td>${newEmployee.firstName}</td>
-                <td>${newEmployee.lastName}</td>
-                <td>${newEmployee.iD}</td>
-                <td>${newEmployee.title}</td>
-                <td>${newEmployee.annualSalary}</td>
+                <td>${person.firstName}</td>
+                <td>${person.lastName}</td>
+                <td>${person.iD}</td>
+                <td>${person.title}</td>
+                <td>${person.annualSalary}</td>
                 <td>
                 <button class"delete">Delete</button>
                 </td>
