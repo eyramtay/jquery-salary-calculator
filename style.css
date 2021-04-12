@@ -20,3 +20,8 @@ tr:nth-child(even) {
     background-color: #dddddd;
 
 }
+
+h3 {
+    text-align: right;
+    margin-right: 40%;
+}

@@ -45,6 +45,9 @@ function calculateBuget() {
         totalBudget += Number(startingEmployees[i].annualSalary/12);
     }
     console.log(totalBudget);
+    let budgetOnDom = $('#totalBudgetDisplay');
+    budgetOnDom.empty();
+    budgetOnDom.append(totalBudget);
 }
 
 $(document).ready(readyNow);
@@ -53,6 +56,7 @@ $(document).ready(readyNow);
 function readyNow() {
     // addEmployeeButton();
     $( '#add-employee' ).on('click', addEmployeeButton);
+    calculateBuget();
 }
 
 function addEmployeeButton() {
@@ -80,6 +84,8 @@ function addEmployeeButton() {
         renderEmployees();
 
         clearInputFields();
+
+        calculateBuget();
     }
 
     function renderEmployees() {
