@@ -25,3 +25,7 @@ h3 {
     text-align: right;
     margin-right: 40%;
 }
+
+.overbudget {
+    background-color: red;
+}

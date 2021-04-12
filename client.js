@@ -47,7 +47,7 @@ function calculateBuget() {
     console.log(totalBudget);
     let budgetOnDom = $('#totalBudgetDisplay');
     budgetOnDom.empty();
-    budgetOnDom.append(totalBudget);
+    budgetOnDom.append(Math.round(totalBudget));
 }
 
 $(document).ready(readyNow);
