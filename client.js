@@ -1,6 +1,6 @@
 console.log('--- Weekend Project ---');
 
-const startingEmployees = [
+let startingEmployees = [
     {
         firstName: 'Jen', 
         lastName: 'Barber',
@@ -48,6 +48,15 @@ function calculateBuget() {
     let budgetOnDom = $('#totalBudgetDisplay');
     budgetOnDom.empty();
     budgetOnDom.append(Math.round(totalBudget));
+
+    // $('#totalBudgetDisplay').text(`$${totalBudget / 12}`);
+
+    if (totalBudget >= 20000) {
+        $('#totalBudgetDisplay').addClass('overbudget');
+
+    } else {
+        $('#totalBudgetDisplay').removeClass('overbudget');
+    }
 }
 
 $(document).ready(readyNow);
@@ -57,6 +66,25 @@ function readyNow() {
     // addEmployeeButton();
     $( '#add-employee' ).on('click', addEmployeeButton);
     calculateBuget();
+    $('#out-employee').on('click', 'deleteButton', deleteEmployee);
+    // $('.deleteButton').on('click', deleteEmployee);
+}
+
+function deleteEmployee() {
+    console.log('clicked delete');
+    $(this).parent().parent().remove();
+    // $(this).closest('tr').remove();
+
+    const idToDelete = $(this).closest('tr').find('.deleteID').text();
+
+const tempEmployeeList = [];
+
+    for(let employee of startingEmployees) {
+
+        if(employee.iD !== idToDelete) {
+            tempEmployeeList.push(employee)
+        };
+    }
 }
 
 function addEmployeeButton() {
@@ -96,11 +124,11 @@ function addEmployeeButton() {
             <tr>
                 <td>${person.firstName}</td>
                 <td>${person.lastName}</td>
-                <td>${person.iD}</td>
+                <td class="deleteID">${person.iD}</td>
                 <td>${person.title}</td>
                 <td>${person.annualSalary}</td>
                 <td>
-                <button class"delete">Delete</button>
+                <button class="deleteButton">Delete</button>
                 </td>
             </tr>`)
         }
